@@ -170,6 +170,8 @@
 }
 
 @layer components {
+  .skip-link { position:fixed;z-index:100;top:.5rem;left:.5rem;transform:translateY(-150%);padding:.7rem 1rem;border-radius:var(--radius);background:var(--primary);color:var(--primary-foreground);font-weight:700;text-decoration:none;transition:transform .15s ease; }
+  .skip-link:focus { transform:translateY(0); }
   .site-header { position: fixed; inset: 0 0 auto; z-index: 50; border-bottom: 1px solid var(--border); background: color-mix(in oklab, var(--background) 88%, transparent); backdrop-filter: blur(18px); }
   .nav-shell { height: 4.5rem; max-width: 90rem; margin: auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
   .brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--foreground); text-decoration: none; }

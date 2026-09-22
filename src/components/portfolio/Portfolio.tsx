@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowRight, ArrowUp, Award, Check, ChevronDown, Cloud, Code2, Container, Download, ExternalLink, Github, Linkedin, Mail, Menu, Moon, Network, Send, ServerCog, Sun, X } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { education, experience, navigation, projects, skillGroups } from "@/data/portfolio";
@@ -8,7 +8,7 @@ import certificateAsset from "@/assets/pawan-kumar-cka-certificate.pdf.asset.jso
 const linkedIn = "https://www.linkedin.com/in/kumar-pawan-devops";
 const email = "mailto:ps38839@gmail.com";
 
-function IconLink({ href, label, children }: { href?: string; label: string; children: React.ReactNode }) {
+function IconLink({ href, label, children }: { href?: string; label: string; children: ReactNode }) {
   if (!href) return <span aria-label={`${label} link unavailable`} title={`${label} link coming soon`} className="icon-button cursor-not-allowed opacity-40">{children}</span>;
   return <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="icon-button">{children}</a>;
 }
@@ -46,6 +46,7 @@ export function Portfolio() {
   const [sent, setSent] = useState(false);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); event.currentTarget.reset(); };
   return <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <a href="#main-content" className="skip-link">Skip to content</a>
     <header className="site-header">
       <nav className="nav-shell" aria-label="Primary navigation">
         <a href="#home" className="brand" aria-label="Pawan Kumar home"><span className="brand-mark">PK</span><span><strong>Pawan Kumar</strong><small>DEVOPS / CLOUD</small></span></a>
@@ -55,7 +56,7 @@ export function Portfolio() {
       {menuOpen && <div className="mobile-panel">{navigation.map((item) => <a key={item} href={`#${item}`} onClick={() => setMenuOpen(false)}>{item}</a>)}</div>}
     </header>
 
-    <main>
+    <main id="main-content">
       <section id="home" className="hero reveal is-visible">
         <div className="hero-grid"><div className="hero-copy"><div className="status-line"><span className="status-dot" /> Cloud engineer • CKA certified</div><p className="hero-kicker">DEVOPS ENGINEER <span>/</span> CLOUD ENGINEER</p><h1>Reliable systems.<br/><em>Automated delivery.</em></h1><p className="hero-lead">AWS & Kubernetes <span>•</span> CI/CD Automation <span>•</span> Cloud Infrastructure</p><p className="hero-intro">DevOps Engineer with 2+ years of hands-on experience in CI/CD automation, cloud infrastructure, containerization and Kubernetes orchestration across AWS and GCP.</p><div className="hero-actions"><ButtonLink href="#projects">View my work <ArrowRight /></ButtonLink><ButtonLink href={resumeAsset.url} download variant="secondary"><Download /> Download resume</ButtonLink><ButtonLink href="#contact" variant="ghost">Contact me</ButtonLink></div><div className="social-row"><IconLink label="GitHub"><Github /></IconLink><IconLink href={linkedIn} label="LinkedIn"><Linkedin /></IconLink><span>Certified Kubernetes Administrator</span></div></div>
         <div className="pipeline-panel" aria-label="Cloud delivery pipeline visualization"><div className="panel-top"><span>DELIVERY PIPELINE</span><span className="live"><i/> OPERATIONAL</span></div><div className="pipeline">{[{t:"Cloud",i:Cloud},{t:"CI/CD",i:Code2},{t:"Containers",i:Container},{t:"Kubernetes",i:Network},{t:"Monitoring",i:ServerCog}].map(({t,i:Icon}, index) => <div className="pipeline-step" key={t}><div className="pipeline-icon"><Icon /></div><div><small>0{index+1}</small><strong>{t}</strong></div>{index < 4 && <ArrowRight className="pipeline-arrow" />}</div>)}</div><div className="terminal"><span>$ kubectl get nodes</span><code>control-plane&nbsp;&nbsp; Ready</code><code>worker-01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ready</code><code>worker-02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ready</code></div></div>
