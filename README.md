@@ -1,29 +1,49 @@
-# Welcome to your Lovable project
+# Pawan Kumar — DevOps & Cloud Engineer Portfolio
 
-This project was built with [Lovable](https://lovable.dev).
+A responsive, accessible engineering portfolio built with React, TanStack Start, Vite, TypeScript, Tailwind CSS, and Lucide icons.
 
-## Build with Lovable
+## Local development
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Requires Node.js 20+ and npm, or Bun 1.2+.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
+```bash
+git clone <repository-url>
 cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
 
-## Built with
+The local site runs at the URL shown by Vite.
 
-- TanStack Start
+## Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment
+
+Connect this repository to a modern JavaScript host such as Cloudflare Pages, Netlify, or Vercel. Use `npm run build` as the build command. The host should detect the TanStack Start output automatically.
+
+## Content updates
+
+Portfolio content is centralized in `src/data/portfolio.ts`. Resume and certificate files are project assets referenced from the portfolio page.
+
+## Available commands
+
+- `npm run dev` — start development
+- `npm run build` — create a production build
+- `npm run preview` — preview the production build
+- `npm run lint` — run lint checks
+- `npm run format` — format source files
+
+## Stack
+
+- React 19 and TanStack Start
+- Vite
 - TypeScript
-- React
-- Tailwind CSS
+- Tailwind CSS v4
+- Lucide React
+
+No secrets or environment variables are required for the current frontend-only contact form.
